@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balıkçı Rehberi - Amatör Balıkçıların Cep Rehberi</title>
+  <meta name="description" content="Balıkçı Rehberi, 85+ balık türü, 47 düğüm, av teknikleri, yem tarifleri ve av takvimi ile amatör balıkçıların vazgeçilmez mobil uygulaması." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a1628;
+      color: #fff;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #0d2137 0%, #1a3a5c 100%);
+      padding: 60px 20px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .logo-area {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo-emoji {
+      font-size: 72px;
+      display: block;
+      margin-bottom: 16px;
+      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+    }
+
+    header h1 {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+
+    header p {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      max-width: 480px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+    }
+
+    .badge-row {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+    }
+
+    /* STATS */
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      background: #1a3a5c;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      flex: 1;
+      min-width: 120px;
+      max-width: 200px;
+      text-align: center;
+      padding: 24px 16px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat-num {
+      font-size: 32px;
+      font-weight: 800;
+      color: #4fc3f7;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: rgba(255,255,255,0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* FEATURES */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 36px;
+      color: #fff;
+    }
+
+    .section-title span {
+      color: #4fc3f7;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .feature-card {
+      background: #112238;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(79,195,247,0.3);
+    }
+
+    .feature-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .feature-card p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+
+    /* DOWNLOAD */
+    .download-section {
+      background: linear-gradient(135deg, #1565c0, #0d47a1);
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .download-section h2 {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .download-section p {
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 28px;
+      font-size: 15px;
+    }
+
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      color: #1565c0;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .store-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+
+    .store-btn svg {
+      width: 24px;
+      height: 24px;
+      fill: #1565c0;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #060f1a;
+      text-align: center;
+      padding: 24px 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+    }
+
+    footer a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: #4fc3f7; }
+
+    @media (max-width: 480px) {
+      header h1 { font-size: 26px; }
+      .logo-emoji { font-size: 56px; }
+      .stat-num { font-size: 26px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo-area">
+      <img src="logo2_1.png" alt="Balıkçı Rehberi Logo" style="height:100px;margin-bottom:16px;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.4));" />
+      <h1>Balıkçı Rehberi</h1>
+      <p>Amatör balıkçıların ihtiyaç duyduğu her şey tek uygulamada. Balık türleri, düğümler, av teknikleri, yemler ve çok daha fazlası.</p>
+      <div class="badge-row">
+        <span class="badge">Ücretsiz</span>
+        <span class="badge">Türkçe</span>
+        <span class="badge">İnternet gerektirmez</span>
+        <span class="badge">Android</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">85+</div>
+      <div class="stat-label">Balık Türü</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">47</div>
+      <div class="stat-label">Düğüm</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">60+</div>
+      <div class="stat-label">Ekipman</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Yem Tarifi</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <div class="section">
+    <h2 class="section-title">Neler <span>içeriyor?</span></h2>
+    <div class="features">
+
+      <div class="feature-card">
+        <span class="feature-icon">🐟</span>
+        <h3>Balık Türleri</h3>
+        <p>85'ten fazla deniz ve tatlı su balığı için detaylı bilgi, görseller, yaşam alanları ve av dönemleri.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🪢</span>
+        <h3>Balıkçılık Düğümleri</h3>
+        <p>47 farklı düğüm için adım adım görsel anlatım. Başlangıç seviyesinden uzmana kadar her zorluk seviyesi.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🎯</span>
+        <h3>Av Teknikleri</h3>
+        <p>Olta, jig, popper ve daha fazlası. Heddef türe göre filtrelenebilen teknik rehberi.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🪱</span>
+        <h3>Yem Tarifleri</h3>
+        <p>Tatlı su ve deniz yemleri için malzeme listeleri, hazırlama tarifleri ve saklama ipuçları.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">🎒</span>
+        <h3>Malzeme Rehberi</h3>
+        <p>Kamış, makara, misina ve tüm ekipmanlar hakkında açıklamalar ve kullanım bilgileri.</p>
+      </div>
+
+      <div class="feature-card">
+        <span class="feature-icon">📅</span>
+        <h3>Av Takvimi & Yasal Bilgiler</h3>
+        <p>Güncel av yasağı dönemleri, minimum boy limitleri ve amatör balıkçılık mevzuatı.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- DOWNLOAD -->
+  <div class="download-section">
+    <h2>Hemen İndir</h2>
+    <p>Google Play'de ücretsiz olarak erişilebilir.</p>
+    <a class="store-btn" href="https://play.google.com/store/apps/details?id=com.oltaciapp.balikci_rehberi" target="_blank">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.18 23.76c.3.17.65.19.96.07l12.45-7.19-2.78-2.78L3.18 23.76zm-1.12-20.5C1.77 3.6 1.5 4 1.5 4.5v15c0 .5.27.9.56 1.24l.07.07L9.7 13.7v-.18L2.13 6.9l-.07.36zm17.24 8.41l-2.18-1.26-3.06 3.06 3.06 3.06 2.2-1.27c.63-.36.63-1.22-.02-1.59zM4.14.31L16.6 7.5l-2.78 2.78L3.18.24C3.5.12 3.84.14 4.14.31z"/>
+      </svg>
+      Google Play'den İndir
+    </a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Balıkçı Rehberi &nbsp;·&nbsp; <a href="https://sites.google.com/view/balikcirehberi/ana-sayfa">Gizlilik Politikası</a></p>
+  </footer>
+
+</body>
+</html>
